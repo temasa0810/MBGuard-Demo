@@ -1,0 +1,12 @@
+# 빌드 산출물 · 생성물 (소스만 추적)
+.gradle/
+.cxx/
+app/.cxx/
+app/build/
+build/
+local.properties
+*.iml
+.idea/
+# 생성: 내부 .so 암호화 에셋(빌드시 재생성) · 덤프 결과
+app/src/main/assets/libmbguard_lv2.so.enc
+dumped_libmbguard_lv2.so

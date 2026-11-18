@@ -1,0 +1,18 @@
+# Android build artifacts
+**/build/
+**/.gradle/
+**/.cxx/
+**/.idea/
+**/local.properties
+**/*.iml
+
+# L3 generated at build time
+**/app/src/main/assets/libmbguard_lv2.so.enc
+**/dumped_libmbguard_lv2.so
+
+# tooling state
+.omc/
+
+# OS
+.DS_Store
+Thumbs.db

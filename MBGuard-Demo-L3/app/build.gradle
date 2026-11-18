@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.mbbypass.mbguarddemo'
+    compileSdk 34
+    ndkVersion '28.0.12674087'
+
+    defaultConfig {
+        applicationId 'com.mbbypass.mbguarddemo.l3'
+        minSdk 24
+        targetSdk 34
+        versionCode 3
+        versionName '3.0'
+        ndk { abiFilters 'arm64-v8a' }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+            version '3.31.1'
+        }
+    }
+
+    // L3 패킹: 내부 모듈(libmbguard_lv2.so)의 평문은 APK에 넣지 않는다.
+    // 빌드 중 생성된 평문 .so는 encrypt_so.py가 assets/libmbguard_lv2.so.enc로 암호화해 동봉.
+    // → APK lib/ 에는 로더만, 내부 로직은 암호화 에셋으로만 존재.
+    packagingOptions {
+        jniLibs {
+            excludes += ['**/libmbguard_lv2.so']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+}
