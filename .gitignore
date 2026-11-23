@@ -10,6 +10,9 @@
 **/app/src/main/assets/libmbguard_lv2.so.enc
 **/dumped_libmbguard_lv2.so
 
+# release staging (APKs go to GitHub Releases, not git)
+dist/
+
 # tooling state
 .omc/
 
